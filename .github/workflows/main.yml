@@ -47,12 +47,12 @@ jobs:
 
       # Show the execution plan when applying
       - name: Terraform Plan
-        if: ${{ github.event.inputs.action == 'Terraform_apply' }}
+        if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
         run: terraform plan
 
       # Apply changes to AWS when applying
       - name: Terraform Apply
-        if: ${{ github.event.inputs.action == 'Terraform_apply' }}
+        if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
         run: terraform apply -auto-approve
 
         # Show destruction plan
