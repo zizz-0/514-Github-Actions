@@ -54,4 +54,13 @@ jobs:
       - name: Terraform Apply
         if: ${{ github.event.inputs.action == 'Terraform_apply' }}
         run: terraform apply -auto-approve
-        
+
+        # Show destruction plan
+      - name: Terraform Destroy Plan
+        if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
+        run: terraform plan -destroy
+
+      # Destroy AWS resources
+      - name: Terraform Destroy
+        if: ${{ github.event.inputs.action == 'Terraform_destroy' }}
+        run: terraform destroy -auto-approve
